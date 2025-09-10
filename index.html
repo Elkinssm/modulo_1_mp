@@ -1,0 +1,1391 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Desarrollo de Mini Programas con Alipay - Módulo 1</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <div class="presentation-container">
+      <!-- Navigation -->
+      <nav class="nav-bar">
+        <div class="nav-content">
+          <button class="nav-btn" id="prevBtn">‹</button>
+          <div class="slide-counter">
+            <span id="currentSlide">1</span> / <span id="totalSlides">26</span>
+          </div>
+          <input id="gotoSlideInput" type="number" min="1" max="26" placeholder="#" style="width: 48px; margin: 0 8px; text-align: center; border-radius: 6px; border: 1px solid #333; background: #222; color: #fff; font-size: 1rem;" title="Ir a diapositiva" />
+          <button class="nav-btn" id="gotoSlideBtn" title="Ir">↵</button>
+          <button
+            class="nav-btn fullscreen-btn"
+            id="fullscreenBtn"
+            title="Pantalla completa"
+          >
+            ⛶
+          </button>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressBar"></div>
+        </div>
+      </nav>
+
+      <!-- Quick Navigation Menu -->
+      <div class="quick-nav hidden" id="quickNav">
+        <div class="quick-nav-content">
+          <h3>Navegación Rápida</h3>
+          <div class="nav-sections">
+            <button class="quick-nav-item" data-slide="0">
+              <span class="nav-icon">🏠</span>
+              <span class="nav-text">Título del Curso</span>
+            </button>
+            <button class="quick-nav-item" data-slide="1">
+              <span class="nav-icon">📋</span>
+              <span class="nav-text">Agenda</span>
+            </button>
+            <button class="quick-nav-item" data-slide="2">
+              <span class="nav-icon">⚠️</span>
+              <span class="nav-text">1.1 - Puntos de Dolor</span>
+            </button>
+            <button class="quick-nav-item" data-slide="7">
+              <span class="nav-icon">❓</span>
+              <span class="nav-text">1.2 - ¿Qué es un Mini Programa?</span>
+            </button>
+            <button class="quick-nav-item" data-slide="13">
+              <span class="nav-icon">📊</span>
+              <span class="nav-text">1.3 - Estadísticas</span>
+            </button>
+            <button class="quick-nav-item" data-slide="17">
+              <span class="nav-icon">⚖️</span>
+              <span class="nav-text">1.4 - Comparación</span>
+            </button>
+            <button class="quick-nav-item" data-slide="22">
+              <span class="nav-icon">✨</span>
+              <span class="nav-text">1.5 - Ventajas</span>
+            </button>
+            <button class="quick-nav-item" data-slide="24">
+              <span class="nav-icon">📝</span>
+              <span class="nav-text">Resumen</span>
+            </button>
+            <button class="quick-nav-item" data-slide="25">
+              <span class="nav-icon">🎯</span>
+              <span class="nav-text">Recursos y Q&A</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <button class="menu-toggle" id="menuToggle">☰</button>
+
+      <!-- Slides Container -->
+      <div class="slides-wrapper">
+        <!-- Slide 1: Título del Curso -->
+        <div class="slide active">
+          <div class="slide-content title-slide">
+            <div class="title-content">
+              <div class="course-badge">Curso Miniprogramas</div>
+              <h1>Desarrollo de Mini Programas con Alipay</h1>
+              <h2>El Futuro de las Aplicaciones Ligeras</h2>
+              <div class="subtitle">
+                Módulo 1: Introducción a los Mini Programas
+              </div>
+              <div class="course-info">
+                <div class="info-card">
+                  <div class="info-icon">📚</div>
+                  <div class="info-data">
+                    <div class="info-label">Lecciones</div>
+                    <div class="info-value">5 módulos</div>
+                  </div>
+                </div>
+
+              </div>
+              <div class="alipay-logo">
+                <div class="logo-icon">💳</div>
+                <div class="logo-text">Alipay Mini Programs</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 2: Agenda -->
+        <div class="slide">
+          <div class="slide-content">
+            <h1>Agenda del Módulo 1</h1>
+            <div class="agenda-timeline">
+              <div class="agenda-item" data-duration="4">
+                <div class="lesson-badge">1.1</div>
+                <div class="lesson-content">
+                  <h3>Puntos de dolor de las apps tradicionales</h3>
+                  <p>Análisis de problemas de desarrollo, usuario y negocio</p>
+                  <div class="lesson-meta">4 horas • 4 diapositivas</div>
+                </div>
+                <div class="lesson-icon">⚠️</div>
+              </div>
+              <div class="agenda-item" data-duration="6">
+                <div class="lesson-badge">1.2</div>
+                <div class="lesson-content">
+                  <h3>¿Qué es un Mini Programa?</h3>
+                  <p>Definición, arquitectura y características técnicas</p>
+                  <div class="lesson-meta">6 horas • 6 diapositivas</div>
+                </div>
+                <div class="lesson-icon">❓</div>
+              </div>
+              <div class="agenda-item" data-duration="5">
+                <div class="lesson-badge">1.3</div>
+                <div class="lesson-content">
+                  <h3>Estadísticas y casos de uso</h3>
+                  <p>Datos reales del mercado y casos de éxito</p>
+                  <div class="lesson-meta">5 horas • 4 diapositivas</div>
+                </div>
+                <div class="lesson-icon">📊</div>
+              </div>
+              <div class="agenda-item" data-duration="6">
+                <div class="lesson-badge">1.4</div>
+                <div class="lesson-content">
+                  <h3>Comparación técnica detallada</h3>
+                  <p>Análisis vs apps nativas y web applications</p>
+                  <div class="lesson-meta">6 horas • 5 diapositivas</div>
+                </div>
+                <div class="lesson-icon">⚖️</div>
+              </div>
+              <div class="agenda-item" data-duration="4">
+                <div class="lesson-badge">1.5</div>
+                <div class="lesson-content">
+                  <h3>Ventajas principales</h3>
+                  <p>Beneficios cuantificados para todos los stakeholders</p>
+                  <div class="lesson-meta">4 horas • 3 diapositivas</div>
+                </div>
+                <div class="lesson-icon">✨</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 3: Lección 1.1 - Introducción -->
+        <div class="slide">
+          <div class="slide-content section-intro">
+            <div class="section-header">
+              <div class="section-badge">Lección 1.1</div>
+              <h1>Puntos de Dolor de las Apps Tradicionales</h1>
+              <div class="section-subtitle">
+                ¿Por qué necesitamos una alternativa?
+              </div>
+            </div>
+            <div class="problem-categories">
+              <div class="problem-category">
+                <div class="category-icon">⚙️</div>
+                <h3>Desarrollo</h3>
+                <p>
+                  Costos elevados, tiempos largos, fragmentación de plataformas
+                </p>
+              </div>
+              <div class="problem-category">
+                <div class="category-icon">👤</div>
+                <h3>Usuario</h3>
+                <p>
+                  Fricción de descarga, espacio limitado, actualizaciones
+                  manuales
+                </p>
+              </div>
+              <div class="problem-category">
+                <div class="category-icon">💼</div>
+                <h3>Negocio</h3>
+                <p>
+                  Distribución restringida, costos de adquisición, ROI incierto
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 4: El Muro de las App Stores -->
+        <div class="slide">
+          <div class="slide-content">
+            <h1>El "Muro" de las App Stores</h1>
+            <div class="barrier-visualization">
+              <div class="user-journey">
+                <div class="journey-step">
+                  <div class="step-icon">🔍</div>
+                  <div class="step-text">Buscar</div>
+                  <div class="step-loss">100%</div>
+                </div>
+                <div class="journey-arrow">→</div>
+                <div class="journey-step">
+                  <div class="step-icon">⏳</div>
+                  <div class="step-text">Esperar</div>
+                  <div class="step-loss">85%</div>
+                </div>
+                <div class="journey-arrow">→</div>
+                <div class="journey-step">
+                  <div class="step-icon">📥</div>
+                  <div class="step-text">Instalar</div>
+                  <div class="step-loss">70%</div>
+                </div>
+                <div class="journey-arrow">→</div>
+                <div class="journey-step">
+                  <div class="step-icon">✍️</div>
+                  <div class="step-text">Registrarse</div>
+                  <div class="step-loss">45%</div>
+                </div>
+                <div class="journey-arrow">→</div>
+                <div class="journey-step success">
+                  <div class="step-icon">✅</div>
+                  <div class="step-text">Usar</div>
+                  <div class="step-loss">30%</div>
+                </div>
+              </div>
+              <div class="barrier-stats">
+                <div class="stat-highlight">
+                  <div class="stat-number">70%</div>
+                  <div class="stat-label">Abandono en el proceso</div>
+                </div>
+                <div class="stat-highlight">
+                  <div class="stat-number">30%</div>
+                  <div class="stat-label">Comisión App Store</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 5: Costos y Tiempos de Desarrollo -->
+        <div class="slide">
+          <div class="slide-content">
+            <h1>Costos y Tiempos de Desarrollo</h1>
+            <div class="development-comparison">
+              <div class="dev-comparison-item native">
+                <h3>Apps Nativas</h3>
+                <div class="comparison-metrics">
+                  <div class="metric">
+                    <div class="metric-label">Tiempo</div>
+                    <div class="metric-value">6-12 meses</div>
+                  </div>
+                  <div class="metric">
+                    <div class="metric-label">Codebase</div>
+                    <div class="metric-value">iOS + Android</div>
+                  </div>
+                  <div class="metric">
+                    <div class="metric-label">Equipos</div>
+                    <div class="metric-value">2 especializados</div>
+                  </div>
+                  <div class="metric">
+                    <div class="metric-label">Costo</div>
+                    <div class="metric-value">Alto (100%)</div>
+                  </div>
+                </div>
+              </div>
+              <div class="dev-comparison-item miniprogram">
+                <h3>Mini Programs</h3>
+                <div class="comparison-metrics">
+                  <div class="metric">
+                    <div class="metric-label">Tiempo</div>
+                    <div class="metric-value">3-6 meses</div>
+                  </div>
+                  <div class="metric">
+                    <div class="metric-label">Codebase</div>
+                    <div class="metric-value">Único</div>
+                  </div>
+                  <div class="metric">
+                    <div class="metric-label">Equipos</div>
+                    <div class="metric-value">1 web</div>
+                  </div>
+                  <div class="metric">
+                    <div class="metric-label">Costo</div>
+                    <div class="metric-value">50-70% menor</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="cost-savings">
+              <h3>Ahorro potencial: $50,000 - $150,000 USD por proyecto</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 6: App Fatigue -->
+        <div class="slide">
+          <div class="slide-content">
+            <h1>La "Fatiga de las Aplicaciones"</h1>
+            <div class="fatigue-stats">
+              <div class="fatigue-visual">
+                <div class="phone-mockup">
+                  <div class="phone-screen">
+                    <div class="app-grid">
+                      <div class="app-icon active"></div>
+                      <div class="app-icon active"></div>
+                      <div class="app-icon active"></div>
+                      <div class="app-icon active"></div>
+                      <div class="app-icon active"></div>
+                      <div class="app-icon active"></div>
+                      <div class="app-icon active"></div>
+                      <div class="app-icon active"></div>
+                      <div class="app-icon active"></div>
+                      <div class="app-icon unused"></div>
+                      <div class="app-icon unused"></div>
+                      <div class="app-icon unused"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="fatigue-data">
+                <div class="fatigue-stat">
+                  <div class="stat-circle">
+                    <div class="stat-number">80+</div>
+                  </div>
+                  <div class="stat-description">Apps instaladas promedio</div>
+                </div>
+                <div class="fatigue-stat">
+                  <div class="stat-circle">
+                    <div class="stat-number">9</div>
+                  </div>
+                  <div class="stat-description">Apps usadas diariamente</div>
+                </div>
+                <div class="fatigue-stat">
+                  <div class="stat-circle">
+                    <div class="stat-number">89%</div>
+                  </div>
+                  <div class="stat-description">Apps abandonadas</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 7: Lección 1.2 - Introducción -->
+        <div class="slide">
+          <div class="slide-content section-intro">
+            <div class="section-header">
+              <div class="section-badge">Lección 1.2</div>
+              <h1>¿Qué es un Mini Programa?</h1>
+              <div class="section-subtitle">
+                La solución ágil y sin instalación
+              </div>
+            </div>
+            <div class="miniprogram-intro">
+              <div class="definition-highlight">
+                <h3>"Apps dentro de una Super App"</h3>
+                <p>
+                  Aplicaciones ligeras que se ejecutan dentro del ecosistema de
+                  Alipay, combinando la agilidad de la web con el poder de las
+                  aplicaciones nativas.
+                </p>
+              </div>
+              <div class="ecosystem-preview">
+                <div class="super-app-container">
+                  <div class="super-app-title">Alipay Ecosystem</div>
+                  <div class="mini-apps-grid">
+                    <div class="mini-app">Pagos</div>
+                    <div class="mini-app">E-commerce</div>
+                    <div class="mini-app">Delivery</div>
+                    <div class="mini-app">Transporte</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 8: Definiciones Clave -->
+        <div class="slide">
+          <div class="slide-content">
+            <h1>Definiciones Clave del Ecosistema</h1>
+            <div class="definitions-carousel">
+              <div class="definition-card featured">
+                <div class="definition-icon">🎯</div>
+                <h3>Mini Program</h3>
+                <p>
+                  Sub-aplicación ligera (máx. 20MB) que se ejecuta dentro de
+                  Alipay sin instalación tradicional
+                </p>
+                <div class="definition-tech">
+                  HTML5 + JS + CSS + APIs nativas
+                </div>
+              </div>
+              <div class="definition-card">
+                <div class="definition-icon">🏢</div>
+                <h3>Super App</h3>
+                <p>
+                  Plataforma que integra múltiples servicios y Mini Programs en
+                  una sola aplicación
+                </p>
+              </div>
+              <div class="definition-card">
+                <div class="definition-icon">🌐</div>
+                <h3>Ecosistema</h3>
+                <p>
+                  Red interconectada de desarrolladores, usuarios y servicios
+                </p>
+              </div>
+              <div class="definition-card">
+                <div class="definition-icon">🔌</div>
+                <h3>Host App</h3>
+                <p>Aplicación principal (Alipay) que provee runtime y APIs</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 9: Características Técnicas -->
+        <div class="slide">
+          <div class="slide-content">
+            <h1>Características Técnicas</h1>
+            <div class="tech-grid">
+              <div class="tech-card primary">
+                <div class="tech-icon">📦</div>
+                <h3>Tamaño Limitado</h3>
+                <div class="tech-detail">Máximo 8MB</div>
+                <p>Optimizado para carga rápida</p>
+              </div>
+              <div class="tech-card">
+                <div class="tech-icon">💻</div>
+                <h3>Stack Tecnológico</h3>
+                <div class="tech-detail">AXML+ JS + CSS</div>
+                <p>Tecnologías web estándar</p>
+              </div>
+              <div class="tech-card">
+                <div class="tech-icon">⚡</div>
+                <h3>Sin Instalación</h3>
+                <div class="tech-detail">Acceso inmediato</div>
+                <p>QR codes, enlaces, búsqueda</p>
+              </div>
+              <div class="tech-card">
+                <div class="tech-icon">🔒</div>
+                <h3>Sandbox Seguro</h3>
+                <div class="tech-detail">Contenedor aislado</div>
+                <p>Ejecuta dentro de Alipay</p>
+              </div>
+              <div class="tech-card">
+                <div class="tech-icon">🔌</div>
+                <h3>APIs Nativas</h3>
+                <div class="tech-detail">Funciones del dispositivo</div>
+                <p>Pago, GPS, cámara, contactos</p>
+              </div>
+              <div class="tech-card">
+                <div class="tech-icon">🔄</div>
+                <h3>Actualizaciones</h3>
+                <div class="tech-detail">Transparentes</div>
+                <p>Sin intervención del usuario</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 10: Historia y Evolución -->
+        <div class="slide">
+          <div class="slide-content">
+            <h1>Historia y Evolución de Mini Programs</h1>
+            <div class="evolution-timeline">
+              <div class="timeline-track"></div>
+              <div class="timeline-event" data-year="2017">
+                <div class="event-marker wechat"></div>
+                <div class="event-content">
+                  <div class="event-year">2017</div>
+                  <h3>WeChat Mini Programs</h3>
+                  <p>Lanzamiento del primer ecosistema de Mini Programs</p>
+                  <div class="event-impact">Pionero global</div>
+                </div>
+              </div>
+              <div class="timeline-event" data-year="2018">
+                <div class="event-marker alipay"></div>
+                <div class="event-content">
+                  <div class="event-year">2018</div>
+                  <h3>Alipay Mini Programs</h3>
+                  <p>
+                    Alipay introduce su plataforma enfocada en pagos y servicios
+                  </p>
+                  <div class="event-impact">Especialización fintech</div>
+                </div>
+              </div>
+              <div class="timeline-event" data-year="2019">
+                <div class="event-marker baidu"></div>
+                <div class="event-content">
+                  <div class="event-year">2019</div>
+                  <h3>Expansión del Mercado</h3>
+                  <p>Baidu Smart Programs y otras plataformas</p>
+                  <div class="event-impact">Diversificación</div>
+                </div>
+              </div>
+              <div class="timeline-event" data-year="2024">
+                <div class="event-marker future"></div>
+                <div class="event-content">
+                  <div class="event-year">2024</div>
+                  <h3>Madurez del Ecosistema</h3>
+                  <p>
+                    661M usuarios activos en Alipay, proyección $8.9B para 2033
+                  </p>
+                  <div class="event-impact">Adopción masiva</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 11: Arquitectura del Sistema -->
+        <div class="slide">
+          <div class="slide-content">
+            <h1>Arquitectura del Sistema</h1>
+            <div class="architecture-diagram">
+              <div class="arch-layer user-layer">
+                <h3>Capa de Usuario</h3>
+                <div class="layer-components">
+                  <div class="component">Interfaz Alipay</div>
+                  <div class="component">Scanner QR</div>
+                  <div class="component">Búsqueda</div>
+                </div>
+              </div>
+              <div class="arch-arrow">↓</div>
+              <div class="arch-layer runtime-layer">
+                <h3>Runtime de Mini Programs</h3>
+                <div class="layer-components">
+                  <div class="component">JSCore Engine</div>
+                  <div class="component">UI Renderer</div>
+                  <div class="component">API Bridge</div>
+                </div>
+              </div>
+              <div class="arch-arrow">↓</div>
+              <div class="arch-layer platform-layer">
+                <h3>Plataforma Alipay</h3>
+                <div class="layer-components">
+                  <div class="component">Payment APIs</div>
+                  <div class="component">User Identity</div>
+                  <div class="component">Analytics</div>
+                </div>
+              </div>
+              <div class="arch-arrow">↓</div>
+              <div class="arch-layer os-layer">
+                <h3>Sistema Operativo</h3>
+                <div class="layer-components">
+                  <div class="component">iOS / Android</div>
+                  <div class="component">APIs Nativas</div>
+                  <div class="component">Hardware</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 12: PWA vs Mini Programs -->
+        <div class="slide">
+          <div class="slide-content">
+            <h1>PWA vs Mini Programs: Diferencias Clave</h1>
+            <div class="comparison-split">
+              <div class="comparison-side pwa">
+                <div class="side-header">
+                  <h3>Progressive Web Apps</h3>
+                  <div class="side-icon">🌐</div>
+                </div>
+                <div class="side-features">
+                  <div class="feature">✅ Estándares web abiertos</div>
+                  <div class="feature">✅ Funciona en cualquier navegador</div>
+                  <div class="feature">⚠️ APIs limitadas del navegador</div>
+                  <div class="feature">⚠️ Sin integración de pagos nativa</div>
+                  <div class="feature">❌ Descubrimiento complejo</div>
+                  <div class="feature">❌ Sin base de usuarios garantizada</div>
+                </div>
+              </div>
+              <div class="vs-divider">VS</div>
+              <div class="comparison-side miniprogram">
+                <div class="side-header">
+                  <h3>Mini Programs</h3>
+                  <div class="side-icon">🚀</div>
+                </div>
+                <div class="side-features">
+                  <div class="feature">
+                    ✅ APIs enriquecidas de la Super App
+                  </div>
+                  <div class="feature">✅ Integración nativa de pagos</div>
+                  <div class="feature">✅ Base de usuarios masiva (661M)</div>
+                  <div class="feature">✅ Descubrimiento contextual</div>
+                  <div class="feature">⚠️ Dependiente de la plataforma</div>
+                  <div class="feature">⚠️ Regulaciones específicas</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 13: Lección 1.3 - Estadísticas -->
+        <div class="slide">
+          <div class="slide-content section-intro">
+            <div class="section-header">
+              <div class="section-badge">Lección 1.3</div>
+              <h1>Estadísticas y Casos de Uso</h1>
+              <div class="section-subtitle">
+                El impacto real en el mercado global
+              </div>
+            </div>
+            <div class="key-stats">
+              <div class="stat-card primary">
+                <div class="stat-icon">👥</div>
+                <div class="stat-number">661M</div>
+                <div class="stat-label">
+                  Usuarios activos Alipay Mini Programs (Mayo 2024)
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon">💰</div>
+                <div class="stat-number">$8.9B</div>
+                <div class="stat-label">Mercado proyectado para 2033</div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon">📈</div>
+                <div class="stat-number">15.8%</div>
+                <div class="stat-label">CAGR de crecimiento anual</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 14: Crecimiento del Mercado -->
+        <div class="slide">
+          <div class="slide-content">
+            <h1>Crecimiento Exponencial del Mercado</h1>
+            <div class="market-growth">
+              <div
+                class="growth-chart"
+                style="position: relative; height: 400px"
+              >
+                <canvas id="marketGrowthChart"></canvas>
+              </div>
+              <div class="growth-insights">
+                <div class="insight-item">
+                  <h3>Drivers de Crecimiento</h3>
+                  <ul>
+                    <li>Adopción masiva en Asia-Pacífico (68%)</li>
+                    <li>Expansión a mercados occidentales</li>
+                    <li>Integración con servicios financieros</li>
+                    <li>Demanda post-COVID de soluciones sin contacto</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 15: Adopción por Sectores -->
+        <div class="slide">
+          <div class="slide-content">
+            <h1>Adopción por Sectores de Industria</h1>
+            <div class="sector-analysis">
+              <div
+                class="sector-chart"
+                style="position: relative; height: 350px"
+              >
+                <canvas id="sectorChart"></canvas>
+              </div>
+              <div class="sector-details">
+                <div class="sector-highlight">
+                  <h3>Líderes de Adopción</h3>
+                  <div class="leader-item">
+                    <div class="leader-icon">🛍️</div>
+                    <div class="leader-info">
+                      <div class="leader-name">E-commerce</div>
+                      <div class="leader-percent">40%</div>
+                    </div>
+                  </div>
+                  <div class="leader-item">
+                    <div class="leader-icon">💳</div>
+                    <div class="leader-info">
+                      <div class="leader-name">Servicios Financieros</div>
+                      <div class="leader-percent">25%</div>
+                    </div>
+                  </div>
+                  <div class="leader-item">
+                    <div class="leader-icon">🏙️</div>
+                    <div class="leader-info">
+                      <div class="leader-name">Servicios de Ciudad</div>
+                      <div class="leader-percent">15%</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 16: Casos de Éxito Documentados -->
+        <div class="slide">
+          <div class="slide-content">
+            <h1>Casos de Éxito Documentados</h1>
+            <div class="success-showcase">
+              <div class="success-card featured">
+                <div class="success-header">
+                  <div class="company-logo">🚚</div>
+                  <div class="company-info">
+                    <h3>Huolala</h3>
+                    <div class="company-sector">Plataforma Logística</div>
+                  </div>
+                  <div class="success-metric">93%</div>
+                </div>
+                <div class="success-details">
+                  <p>
+                    <strong>Impacto:</strong> Recuperación de pérdidas durante
+                    COVID-19
+                  </p>
+                  <p>
+                    <strong>Estrategia:</strong> Mini Program para servicios de
+                    entrega sin contacto
+                  </p>
+                  <p>
+                    <strong>Resultado:</strong> Crecimiento exponencial en
+                    pandemia
+                  </p>
+                </div>
+              </div>
+              <div class="success-grid">
+                <div class="success-card">
+                  <div class="success-icon">☕</div>
+                  <h3>Starbucks</h3>
+                  <p>
+                    Programa de lealtad, pedidos y pagos integrados en
+                    ecosistema Alipay
+                  </p>
+                  <div class="success-tags">
+                    <span class="tag">F&B</span>
+                    <span class="tag">Pagos</span>
+                  </div>
+                </div>
+                <div class="success-card">
+                  <div class="success-icon">🚗</div>
+                  <h3>Didi</h3>
+                  <p>Servicios de taxi sin descargar la aplicación completa</p>
+                  <div class="success-tags">
+                    <span class="tag">Movilidad</span>
+                    <span class="tag">Urbano</span>
+                  </div>
+                </div>
+                <div class="success-card">
+                  <div class="success-icon">📊</div>
+                  <h3>800+ Mini Programs</h3>
+                  <p>
+                    Con +10,000 MAU cada uno, desarrollados en promedio de 2
+                    meses
+                  </p>
+                  <div class="success-tags">
+                    <span class="tag">2020</span>
+                    <span class="tag">Escala</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 17: Lección 1.4 - Comparación -->
+        <div class="slide">
+          <div class="slide-content section-intro">
+            <div class="section-header">
+              <div class="section-badge">Lección 1.4</div>
+              <h1>Comparación Técnica Detallada</h1>
+              <div class="section-subtitle">
+                Análisis exhaustivo de tecnologías móviles
+              </div>
+            </div>
+            <div class="comparison-preview">
+              <div class="tech-option">
+                <div class="option-icon">📱</div>
+                <h3>Apps Nativas</h3>
+                <div class="option-rating">⭐⭐⭐⭐⭐</div>
+              </div>
+              <div class="tech-option">
+                <div class="option-icon">🌐</div>
+                <h3>Web Apps (PWA)</h3>
+                <div class="option-rating">⭐⭐⭐</div>
+              </div>
+              <div class="tech-option highlight">
+                <div class="option-icon">🚀</div>
+                <h3>Mini Programs</h3>
+                <div class="option-rating">⭐⭐⭐⭐</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 18: Tabla Comparativa Completa -->
+        <div class="slide">
+          <div class="slide-content">
+            <h1>Matriz de Comparación Detallada</h1>
+            <div class="comprehensive-table">
+              <div class="table-container">
+                <table class="comparison-matrix">
+                  <thead>
+                    <tr>
+                      <th>Criterio</th>
+                      <th class="miniprogram-col">Mini Programs</th>
+                      <th class="native-col">Apps Nativas</th>
+                      <th class="web-col">Web Apps</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="criteria">Tiempo de Desarrollo</td>
+                      <td class="success">3-6 meses</td>
+                      <td class="warning">6-12 meses</td>
+                      <td class="success">2-4 meses</td>
+                    </tr>
+                    <tr>
+                      <td class="criteria">Costo de Desarrollo</td>
+                      <td class="success">50-70% menor</td>
+                      <td class="warning">Alto (100%)</td>
+                      <td class="success">Muy bajo</td>
+                    </tr>
+                    <tr>
+                      <td class="criteria">Instalación</td>
+                      <td class="success">No requerida</td>
+                      <td class="warning">Desde App Store</td>
+                      <td class="success">No requerida</td>
+                    </tr>
+                    <tr>
+                      <td class="criteria">Rendimiento</td>
+                      <td class="success">Muy bueno</td>
+                      <td class="success">Excelente</td>
+                      <td class="warning">Variable</td>
+                    </tr>
+                    <tr>
+                      <td class="criteria">Cross-platform</td>
+                      <td class="success">Único codebase</td>
+                      <td class="warning">Múltiples</td>
+                      <td class="success">Universal</td>
+                    </tr>
+                    <tr>
+                      <td class="criteria">APIs Nativas</td>
+                      <td class="success">APIs Alipay</td>
+                      <td class="success">Completo</td>
+                      <td class="warning">Limitado</td>
+                    </tr>
+                    <tr>
+                      <td class="criteria">Integración Pagos</td>
+                      <td class="success">Nativa</td>
+                      <td class="warning">Compleja</td>
+                      <td class="warning">Terceros</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 19: Benchmarks de Rendimiento -->
+        <div class="slide">
+          <div class="slide-content">
+            <h1>Benchmarks de Rendimiento</h1>
+            <div class="performance-metrics">
+              <div
+                class="performance-chart"
+                style="position: relative; height: 300px"
+              >
+                <canvas id="performanceChart"></canvas>
+              </div>
+              <div class="performance-details">
+                <div class="metric-group">
+                  <h3>Tiempo de Carga</h3>
+                  <div class="metric-bars">
+                    <div class="metric-bar">
+                      <div class="bar-label">Mini Programs</div>
+                      <div class="bar-container">
+                        <div class="bar-fill" style="width: 20%"></div>
+                        <span class="bar-value">0.5s</span>
+                      </div>
+                    </div>
+                    <div class="metric-bar">
+                      <div class="bar-label">Apps Nativas</div>
+                      <div class="bar-container">
+                        <div class="bar-fill" style="width: 15%"></div>
+                        <span class="bar-value">0.3s</span>
+                      </div>
+                    </div>
+                    <div class="metric-bar">
+                      <div class="bar-label">Web Apps</div>
+                      <div class="bar-container">
+                        <div class="bar-fill" style="width: 60%"></div>
+                        <span class="bar-value">1.5s</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 20: Criterios de Selección -->
+        <div class="slide">
+          <div class="slide-content">
+            <h1>Framework de Decisión Tecnológica</h1>
+            <div class="decision-matrix">
+              <div class="decision-factors">
+                <div class="factor-card">
+                  <div class="factor-icon">⚙️</div>
+                  <h3>Complejidad Funcional</h3>
+                  <div class="factor-scale">
+                    <div class="scale-item">
+                      <div class="scale-label">Básica</div>
+                      <div class="scale-arrow">→</div>
+                      <div class="scale-recommendation">Mini Program</div>
+                    </div>
+                    <div class="scale-item">
+                      <div class="scale-label">Avanzada</div>
+                      <div class="scale-arrow">→</div>
+                      <div class="scale-recommendation">Nativa</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="factor-card">
+                  <div class="factor-icon">⏱️</div>
+                  <h3>Time-to-Market</h3>
+                  <div class="factor-scale">
+                    <div class="scale-item">
+                      <div class="scale-label">Urgente</div>
+                      <div class="scale-arrow">→</div>
+                      <div class="scale-recommendation">Mini Program</div>
+                    </div>
+                    <div class="scale-item">
+                      <div class="scale-label">Flexible</div>
+                      <div class="scale-arrow">→</div>
+                      <div class="scale-recommendation">Web App</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="factor-card">
+                  <div class="factor-icon">💰</div>
+                  <h3>Presupuesto</h3>
+                  <div class="factor-scale">
+                    <div class="scale-item">
+                      <div class="scale-label">Limitado</div>
+                      <div class="scale-arrow">→</div>
+                      <div class="scale-recommendation">Mini Program</div>
+                    </div>
+                    <div class="scale-item">
+                      <div class="scale-label">Amplio</div>
+                      <div class="scale-arrow">→</div>
+                      <div class="scale-recommendation">Nativa</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="factor-card">
+                  <div class="factor-icon">🌍</div>
+                  <h3>Audiencia Objetivo</h3>
+                  <div class="factor-scale">
+                    <div class="scale-item">
+                      <div class="scale-label">Usuarios Alipay</div>
+                      <div class="scale-arrow">→</div>
+                      <div class="scale-recommendation">Mini Program</div>
+                    </div>
+                    <div class="scale-item">
+                      <div class="scale-label">Global</div>
+                      <div class="scale-arrow">→</div>
+                      <div class="scale-recommendation">Web/Nativa</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 21: Casos de Uso Óptimos -->
+        <div class="slide">
+          <div class="slide-content">
+            <h1>Casos de Uso Óptimos por Tecnología</h1>
+            <div class="use-cases-grid">
+              <div class="use-case-category miniprogram">
+                <h3>Ideal para Mini Programs</h3>
+                <div class="use-case-list">
+                  <div class="use-case-item">
+                    <div class="use-case-icon">🛍️</div>
+                    <div class="use-case-text">
+                      E-commerce con pagos frecuentes
+                    </div>
+                  </div>
+                  <div class="use-case-item">
+                    <div class="use-case-icon">🍔</div>
+                    <div class="use-case-text">
+                      Pedidos de comida y delivery
+                    </div>
+                  </div>
+                  <div class="use-case-item">
+                    <div class="use-case-icon">🎫</div>
+                    <div class="use-case-text">
+                      Servicios puntuales (tickets, reservas)
+                    </div>
+                  </div>
+                  <div class="use-case-item">
+                    <div class="use-case-icon">🏪</div>
+                    <div class="use-case-text">
+                      Retail local con pagos móviles
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="use-case-category native">
+                <h3>Ideal para Apps Nativas</h3>
+                <div class="use-case-list">
+                  <div class="use-case-item">
+                    <div class="use-case-icon">🎮</div>
+                    <div class="use-case-text">
+                      Juegos con gráficos intensivos
+                    </div>
+                  </div>
+                  <div class="use-case-item">
+                    <div class="use-case-icon">📱</div>
+                    <div class="use-case-text">
+                      Apps con uso diario intensivo
+                    </div>
+                  </div>
+                  <div class="use-case-item">
+                    <div class="use-case-icon">🔧</div>
+                    <div class="use-case-text">Utilidades del sistema</div>
+                  </div>
+                  <div class="use-case-item">
+                    <div class="use-case-icon">📊</div>
+                    <div class="use-case-text">Apps corporativas complejas</div>
+                  </div>
+                </div>
+              </div>
+              <div class="use-case-category web">
+                <h3>Ideal para Web Apps</h3>
+                <div class="use-case-list">
+                  <div class="use-case-item">
+                    <div class="use-case-icon">📰</div>
+                    <div class="use-case-text">Contenido y noticias</div>
+                  </div>
+                  <div class="use-case-item">
+                    <div class="use-case-icon">📚</div>
+                    <div class="use-case-text">Recursos educativos</div>
+                  </div>
+                  <div class="use-case-item">
+                    <div class="use-case-icon">💼</div>
+                    <div class="use-case-text">Herramientas empresariales</div>
+                  </div>
+                  <div class="use-case-item">
+                    <div class="use-case-icon">🌐</div>
+                    <div class="use-case-text">Plataformas multiplataforma</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 22: Lección 1.5 - Ventajas -->
+        <div class="slide">
+          <div class="slide-content section-intro">
+            <div class="section-header">
+              <div class="section-badge">Lección 1.5</div>
+              <h1>Ventajas Principales</h1>
+              <div class="section-subtitle">
+                El triple beneficio para el ecosistema completo
+              </div>
+            </div>
+            <div class="advantage-stakeholders">
+              <div class="stakeholder-card">
+                <div class="stakeholder-icon">👨‍💻</div>
+                <h3>Desarrolladores</h3>
+                <p>Reducción de costos, tiempo y complejidad técnica</p>
+                <div class="stakeholder-metric">30-50% ahorro</div>
+              </div>
+              <div class="stakeholder-card">
+                <div class="stakeholder-icon">👥</div>
+                <h3>Usuarios</h3>
+                <p>Acceso inmediato y experiencia integrada</p>
+                <div class="stakeholder-metric">661M usuarios</div>
+              </div>
+              <div class="stakeholder-card">
+                <div class="stakeholder-icon">💼</div>
+                <h3>Negocios</h3>
+                <p>Mayor alcance y conversión mejorada</p>
+                <div class="stakeholder-metric">1.4B mercado</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 23: Ventajas Cuantificadas -->
+        <div class="slide">
+          <div class="slide-content">
+            <h1>Beneficios Cuantificados</h1>
+            <div class="quantified-benefits">
+              <div class="benefit-category">
+                <h3>Para Desarrolladores</h3>
+                <div class="benefit-metrics">
+                  <div class="benefit-item">
+                    <div class="benefit-icon">💰</div>
+                    <div class="benefit-data">
+                      <div class="benefit-number">30-50%</div>
+                      <div class="benefit-label">Reducción de costos</div>
+                    </div>
+                  </div>
+                  <div class="benefit-item">
+                    <div class="benefit-icon">⏱️</div>
+                    <div class="benefit-data">
+                      <div class="benefit-number">50%</div>
+                      <div class="benefit-label">Time-to-market más rápido</div>
+                    </div>
+                  </div>
+                  <div class="benefit-item">
+                    <div class="benefit-icon">👨‍💻</div>
+                    <div class="benefit-data">
+                      <div class="benefit-number">1</div>
+                      <div class="benefit-label">Codebase único</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="benefit-category">
+                <h3>Para Usuarios</h3>
+                <div class="benefit-metrics">
+                  <div class="benefit-item">
+                    <div class="benefit-icon">⚡</div>
+                    <div class="benefit-data">
+                      <div class="benefit-number">0s</div>
+                      <div class="benefit-label">Tiempo de instalación</div>
+                    </div>
+                  </div>
+                  <div class="benefit-item">
+                    <div class="benefit-icon">💾</div>
+                    <div class="benefit-data">
+                      <div class="benefit-number">0MB</div>
+                      <div class="benefit-label">Espacio ocupado</div>
+                    </div>
+                  </div>
+                  <div class="benefit-item">
+                    <div class="benefit-icon">🔄</div>
+                    <div class="benefit-data">
+                      <div class="benefit-number">Auto</div>
+                      <div class="benefit-label">Actualizaciones</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="benefit-category">
+                <h3>Para Negocios</h3>
+                <div class="benefit-metrics">
+                  <div class="benefit-item">
+                    <div class="benefit-icon">🎯</div>
+                    <div class="benefit-data">
+                      <div class="benefit-number">661M</div>
+                      <div class="benefit-label">Base de usuarios</div>
+                    </div>
+                  </div>
+                  <div class="benefit-item">
+                    <div class="benefit-icon">💳</div>
+                    <div class="benefit-data">
+                      <div class="benefit-number">+40%</div>
+                      <div class="benefit-label">Tasa de conversión</div>
+                    </div>
+                  </div>
+                  <div class="benefit-item">
+                    <div class="benefit-icon">📊</div>
+                    <div class="benefit-data">
+                      <div class="benefit-number">-60%</div>
+                      <div class="benefit-label">Costo de adquisición</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slide 24: Resumen Ejecutivo -->
+        <div class="slide">
+          <div class="slide-content">
+            <h1>Resumen Ejecutivo del Módulo</h1>
+            <div class="executive-summary">
+              <div class="summary-section">
+                <div class="summary-icon">🎯</div>
+                <h3>Problema Identificado</h3>
+                <p>
+                  Las aplicaciones móviles tradicionales enfrentan desafíos
+                  significativos en costos de desarrollo (6-12 meses), fricción
+                  de usuario (70% abandono) y barreras de distribución (30%
+                  comisión).
+                </p>
+              </div>
+              <div class="summary-section">
+                <div class="summary-icon">💡</div>
+                <h3>Solución Innovadora</h3>
+                <p>
+                  Los Mini Programs ofrecen desarrollo acelerado (3-6 meses),
+                  acceso instantáneo sin instalación y integración nativa con
+                  ecosistemas de pago establecidos.
+                </p>
+              </div>
+              <div class="summary-section">
+                <div class="summary-icon">📈</div>
+                <h3>Oportunidad de Mercado</h3>
+                <p>
+                  Mercado en crecimiento exponencial: 661M usuarios activos,
+                  proyección de $8.9B para 2033 con CAGR de 15.8%. Casos de
+                  éxito documentados como Huolala (93% recuperación).
+                </p>
+              </div>
+              <div class="summary-section">
+                <div class="summary-icon">🚀</div>
+                <h3>Ventaja Competitiva</h3>
+                <p>
+                  Triple beneficio cuantificado: desarrolladores (30-50%
+                  ahorro), usuarios (acceso inmediato) y negocios (base de 661M
+                  usuarios con conversión mejorada).
+                </p>
+              </div>
+              <div class="next-steps">
+                <h3>Próximos Pasos</h3>
+                <p>
+                  Módulo 2: Configuración del entorno de desarrollo y primera
+                  implementación práctica con Alipay Mini Program Studio.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+  <!-- Slide 25: Q&A y Recursos -->
+        <div class="slide">
+          <div class="slide-content">
+            <h1>Q&A y Recursos Adicionales</h1>
+            <div class="qa-resources">
+              <div class="qa-section">
+                <h2>¿Preguntas?</h2>
+                <div class="qa-topics">
+                  <div class="qa-topic">
+                    <div class="qa-icon">🔧</div>
+                    <div class="qa-text">Aspectos técnicos y arquitectura</div>
+                  </div>
+                  <div class="qa-topic">
+                    <div class="qa-icon">💼</div>
+                    <div class="qa-text">Casos de negocio y ROI</div>
+                  </div>
+                  <div class="qa-topic">
+                    <div class="qa-icon">📊</div>
+                    <div class="qa-text">Comparaciones y benchmarks</div>
+                  </div>
+                  <div class="qa-topic">
+                    <div class="qa-icon">🚀</div>
+                    <div class="qa-text">
+                      Implementación y mejores prácticas
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="resources-section">
+                <h3>Recursos Esenciales</h3>
+                <div class="resource-links">
+                  <div class="resource-item">
+                    <div class="resource-icon">🛠️</div>
+                    <div class="resource-info">
+                      <h4>Herramientas de Desarrollo</h4>
+                      <p>Alipay Mini Program Studio IDE</p>
+                    </div>
+                  </div>
+                  <div class="resource-item">
+                    <div class="resource-icon">📚</div>
+                    <div class="resource-info">
+                      <h4>Documentación Oficial</h4>
+                      <p>API References y guías técnicas</p>
+                    </div>
+                  </div>
+                  <div class="resource-item">
+                    <div class="resource-icon">👥</div>
+                    <div class="resource-info">
+                      <h4>Comunidad de Desarrolladores</h4>
+                      <p>Foros y soporte técnico</p>
+                    </div>
+                  </div>
+                  <div class="resource-item">
+                    <div class="resource-icon">🎯</div>
+                    <div class="resource-info">
+                      <h4>Casos de Estudio</h4>
+                      <p>Implementaciones exitosas reales</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="course-completion">
+              <h3>¡Módulo 1 Completado!</h3>
+              <p>
+                Has adquirido el conocimiento fundamental sobre Mini Programs.
+                Continúa con el Módulo 2 para comenzar el desarrollo práctico.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slide 26: Video Embebido -->
+      <div class="slide">
+        <div class="slide-content">
+          <h1>Video Destacado</h1>
+          <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 100%; height: 100%;">
+            <div style="max-width: 800px; width: 100%; aspect-ratio: 16/9; background: #222; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px #0002; margin-bottom: 24px;">
+              <video id="video-embed" width="100%" height="100%" style="width:100%;height:100%;border:0;" src="./assets/De_Píxeles_a_Pinos.mp4" title="Video" controls preload="metadata"></video>
+            </div>
+          </div>
+        </div>
+      </div>
+
+  <script src="app.js"></script>
+  <script>
+    // Navegación directa a una diapositiva por número (cambio automático al escribir)
+    document.addEventListener('DOMContentLoaded', function() {
+      var input = document.getElementById('gotoSlideInput');
+      var btn = document.getElementById('gotoSlideBtn');
+      var total = parseInt(document.getElementById('totalSlides').textContent, 10);
+      function goToSlideFromInput() {
+        var n = parseInt(input.value, 10);
+        if (!isNaN(n) && n >= 1 && n <= total) {
+          if (window.presentationApp && typeof window.presentationApp.goToSlide === 'function') {
+            window.presentationApp.goToSlide(n - 1);
+          } else {
+            var evt = new CustomEvent('gotoSlide', { detail: { slide: n - 1 } });
+            document.dispatchEvent(evt);
+          }
+        }
+      }
+      if (input && btn) {
+        btn.addEventListener('click', goToSlideFromInput);
+        input.addEventListener('input', function(e) {
+          goToSlideFromInput();
+        });
+      }
+    });
+
+    // Pausar el video siempre que se muestre la slide del video y evitar reproducción automática
+    (function() {
+      function pauseVideoIfVisible() {
+        var slides = document.querySelectorAll('.slide');
+        var video = document.getElementById('video-embed');
+        if (!video) return;
+        video.autoplay = false;
+        video.removeAttribute('autoplay');
+        video.pause();
+        // Solo reinicia si la slide está activa
+        slides.forEach(function(slide) {
+          if (slide.contains(video)) {
+            if (slide.classList.contains('active')) {
+              video.pause();
+              video.currentTime = 0;
+            }
+          }
+        });
+        // Nunca permitir reproducción automática
+        video.addEventListener('play', function() {
+          if (!video.closest('.slide').classList.contains('active')) {
+            video.pause();
+          }
+        });
+      }
+      document.addEventListener('DOMContentLoaded', function() {
+        pauseVideoIfVisible();
+      });
+      document.addEventListener('slideChanged', function() {
+        pauseVideoIfVisible();
+      });
+      // Si usas otro evento personalizado para el cambio de slide, reemplaza 'slideChanged' por el correcto
+    })();
+  </script>
+  </body>
+</html>
